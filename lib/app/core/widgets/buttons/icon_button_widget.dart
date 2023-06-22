@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class IconButtonWidget extends StatelessWidget {
+import '../../services/local_auth/debounce/debounce_service.dart';
+import '../../services/local_auth/debounce/debounce_service_impl.dart';
+
+class IconButtonWidget extends StatefulWidget {
   final Widget? child;
   final VoidCallback? onPressed;
 
@@ -11,10 +14,19 @@ class IconButtonWidget extends StatelessWidget {
   });
 
   @override
+  State<IconButtonWidget> createState() => _IconButtonWidgetState();
+}
+
+class _IconButtonWidgetState extends State<IconButtonWidget> {
+  final DebounceService debounceService = DebounceServiceImpl();
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
-      child: child,
+      onTap: () {
+        debounceService(widget.onPressed ?? () {});
+      },
+      child: widget.child,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:titan_crypto/app/core/extensions/app_theme_extension.dart';
+import 'package:titan_crypto/app/core/services/local_auth/debounce/debounce_service_impl.dart';
 import 'package:titan_crypto/app/core/services/local_auth/local_auth_service.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/google_button_widget%20copy.dart';
@@ -8,15 +9,23 @@ import 'package:titan_crypto/app/core/widgets/icons_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_field_rounded_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_widget.dart';
 
+import '../../../core/services/local_auth/debounce/debounce_service.dart';
 import '../../../core/widgets/buttons/facebook_button_widget.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   final LocalAuthService localAuthService;
 
   const SignInPage({
     super.key,
     required this.localAuthService,
   });
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  final DebounceService debounceService = DebounceServiceImpl();
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +43,20 @@ class SignInPage extends StatelessWidget {
             ),
           ),
         ),
-        Column(
+        const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 13.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const TextWidget(
-                    'Email',
-                    style: TextStyle(
-                      color: Color(0xFFA7AFB7),
-                    ),
-                  ),
-                  TextButtonWidget(
-                    title: 'Sign in with mobile',
-                    onPressed: () {},
-                  ),
-                ],
+              padding: EdgeInsets.only(bottom: 13.0),
+              child: TextWidget(
+                'Email',
+                style: TextStyle(
+                  color: Color(0xFFA7AFB7),
+                ),
               ),
             ),
-            const TextFieldRoundedWidget(
-              hint: 'Enter your mobile',
+            TextFieldRoundedWidget(
+              hint: 'Enter your email',
             ),
           ],
         ),
@@ -74,12 +75,12 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               const TextFieldRoundedWidget(
-                hint: 'Enter your mobile',
+                hint: 'Enter your password',
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextButtonWidget(
-                  title: 'Sign in with mobile',
+                  title: 'Forgot password?',
                   onPressed: () {},
                 ),
               ),
@@ -125,7 +126,11 @@ class SignInPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 50.0),
             child: GestureDetector(
-              onTap: localAuthService.doBiometricAuthentication,
+              onTap: () {
+                debounceService(
+                  widget.localAuthService.doBiometricAuthentication,
+                );
+              },
               child: IconsWidget.fingerprint(
                 color: context.appColors.green,
               ),

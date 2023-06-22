@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:titan_crypto/app/core/extensions/app_theme_extension.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/google_button_widget%20copy.dart';
-import 'package:titan_crypto/app/core/widgets/buttons/text_button_widget.dart';
-import 'package:titan_crypto/app/core/widgets/icons_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_field_rounded_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_widget.dart';
 
@@ -20,7 +18,7 @@ class SignUpPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 39.0),
           child: TextWidget(
-            'Sign in',
+            'Sign up',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -28,37 +26,29 @@ class SignUpPage extends StatelessWidget {
             ),
           ),
         ),
-        Column(
+        const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 13.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const TextWidget(
-                    'Email',
-                    style: TextStyle(
-                      color: Color(0xFFA7AFB7),
-                    ),
-                  ),
-                  TextButtonWidget(
-                    title: 'Sign in with mobile',
-                    onPressed: () {},
-                  ),
-                ],
+              padding: EdgeInsets.only(bottom: 13.0),
+              child: TextWidget(
+                'Email',
+                style: TextStyle(
+                  color: Color(0xFFA7AFB7),
+                ),
               ),
             ),
-            const TextFieldRoundedWidget(
-              hint: 'Enter your mobile',
+            TextFieldRoundedWidget(
+              hint: 'Enter your email',
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 25.0),
+        const Padding(
+          padding: EdgeInsets.only(top: 25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(bottom: 13.0),
                 child: TextWidget(
                   'Password',
@@ -67,15 +57,8 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const TextFieldRoundedWidget(
-                hint: 'Enter your mobile',
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: TextButtonWidget(
-                  title: 'Sign in with mobile',
-                  onPressed: () {},
-                ),
+              TextFieldRoundedWidget(
+                hint: 'Enter your password',
               ),
             ],
           ),
@@ -83,12 +66,12 @@ class SignUpPage extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(top: 36.0),
           child: CommonButtonWidget(
-            child: TextWidget('Sign in'),
+            child: TextWidget('Sign up'),
           ),
         ),
         const Center(
           child: Padding(
-            padding: EdgeInsets.only(top: 15.0),
+            padding: EdgeInsets.only(top: 24.0),
             child: TextWidget(
               'Or login with ',
               style: TextStyle(
@@ -98,7 +81,7 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 16.0),
+          padding: const EdgeInsets.only(top: 24.0),
           child: Row(
             children: [
               Expanded(
@@ -115,30 +98,6 @@ class SignUpPage extends StatelessWidget {
             ],
           ),
         ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 50.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: IconsWidget.fingerprint(
-                color: context.appColors.green,
-              ),
-            ),
-          ),
-        ),
-        const Center(
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 20,
-            ),
-            child: TextWidget(
-              'Use fingerprint instead?',
-              style: TextStyle(
-                color: Color(0xFFA7AFB7),
-              ),
-            ),
-          ),
-        )
       ],
     );
   }

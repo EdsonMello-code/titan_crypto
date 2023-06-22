@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:titan_crypto/app/core/services/local_auth/debounce/debounce_service.dart';
+import 'package:titan_crypto/app/core/services/local_auth/debounce/debounce_service_impl.dart';
 
-class ButtonBaseWidget extends StatelessWidget {
+class ButtonBaseWidget extends StatefulWidget {
   final Widget? child;
   final Color? backgrounColor;
   final Size? size;
@@ -17,6 +19,13 @@ class ButtonBaseWidget extends StatelessWidget {
     this.onPressed,
     this.border,
   });
+
+  @override
+  State<ButtonBaseWidget> createState() => _ButtonBaseWidgetState();
+}
+
+class _ButtonBaseWidgetState extends State<ButtonBaseWidget> {
+  final DebounceService debounceService = DebounceServiceImpl();
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +50,26 @@ class ButtonBaseWidget extends StatelessWidget {
               style: ButtonStyle(
                 elevation: const MaterialStatePropertyAll(0),
                 shape: MaterialStatePropertyAll(
-                  border ??
+                  widget.border ??
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
                 ),
                 fixedSize: MaterialStatePropertyAll(
-                  size ??
+                  widget.size ??
                       Size(
                         screenSize.width,
                         54,
                       ),
                 ),
                 backgroundColor: MaterialStatePropertyAll(
-                  backgrounColor,
+                  widget.backgrounColor,
                 ),
               ),
-              onPressed: onPressed,
-              child: child,
+              onPressed: () {
+                debounceService(widget.onPressed ?? () {});
+              },
+              child: widget.child,
             ),
           ),
         );

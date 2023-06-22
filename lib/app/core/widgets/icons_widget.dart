@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:titan_crypto/app/core/extensions/app_theme_extension.dart';
 
 class IconsWidget extends StatelessWidget {
@@ -35,6 +35,17 @@ class IconsWidget extends StatelessWidget {
     );
   }
 
+  factory IconsWidget.close({
+    final double size = 24,
+    final Color? color,
+  }) {
+    return IconsWidget._(
+      url: 'assets/icons/close.svg',
+      size: size,
+      color: color,
+    );
+  }
+
   factory IconsWidget.candle({
     final double size = 24,
     final Color? color,
@@ -48,11 +59,23 @@ class IconsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      url,
-      height: size,
-      width: size,
-      color: color ?? context.appColors.black,
+    return TweenAnimationBuilder<double>(
+      tween: Tween(
+        begin: 1,
+        end: 0,
+      ),
+      duration: const Duration(
+        milliseconds: 600,
+      ),
+      child: SvgPicture.asset(
+        url,
+        height: size,
+        width: size,
+        color: color ?? context.appColors.black,
+      ),
+      builder: (context, value, child) {
+        return child!;
+      },
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:titan_crypto/app/core/extensions/app_theme_extension.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/google_button_widget%20copy.dart';
@@ -63,10 +64,13 @@ class SignUpPage extends StatelessWidget {
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 36.0),
+        Padding(
+          padding: const EdgeInsets.only(top: 36.0),
           child: CommonButtonWidget(
-            child: TextWidget('Sign up'),
+            child: const TextWidget('Sign up'),
+            onPressed: () {
+              context.go('/authentication/sign-up-success');
+            },
           ),
         ),
         const Center(

@@ -19,10 +19,23 @@ class TextWidget extends StatelessWidget {
     final currentStyle = GoogleFonts.ubuntu(
       color: context.appColors.black,
     ).merge(style);
-    return Text(
-      text,
-      textAlign: align,
-      style: currentStyle,
-    );
+    return TweenAnimationBuilder<double>(
+        duration: const Duration(
+          milliseconds: 600,
+        ),
+        curve: Curves.fastEaseInToSlowEaseOut,
+        tween: Tween(begin: 0, end: 1.0),
+        child: Text(
+          text,
+          textAlign: align,
+          style: currentStyle,
+        ),
+        builder: (context, value, child) {
+          return Transform.scale(
+            scaleX: value,
+            alignment: Alignment.centerLeft,
+            child: child,
+          );
+        });
   }
 }

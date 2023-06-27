@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:titan_crypto/app/core/extensions/app_theme_extension.dart';
 import 'package:titan_crypto/app/core/services/local_auth/debounce/debounce_service_impl.dart';
 import 'package:titan_crypto/app/core/services/local_auth/local_auth_service.dart';
@@ -81,7 +82,9 @@ class _SignInPageState extends State<SignInPage> {
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextButtonWidget(
                   title: 'Forgot password?',
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/authentication/reset-password');
+                  },
                 ),
               ),
             ],

@@ -57,6 +57,17 @@ class IconsWidget extends StatelessWidget {
     );
   }
 
+  factory IconsWidget.back({
+    final double size = 24,
+    final Color? color,
+  }) {
+    return IconsWidget._(
+      url: 'assets/icons/back.svg',
+      size: size,
+      color: color,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(

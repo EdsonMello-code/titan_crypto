@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
-import 'package:titan_crypto/app/core/widgets/icons_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_field_rounded_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_widget.dart';
+import 'package:titan_crypto/app/modules/authentication/pages/widgets/authentication_back_button_widget.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key});
@@ -18,35 +17,16 @@ class ResetPasswordPage extends StatelessWidget {
           horizontal: 24.0,
           vertical: 32 + padding.top,
         ),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 37.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 14.0),
-                    child: GestureDetector(
-                      onTap: context.pop,
-                      child: IconsWidget.back(
-                        color: const Color(0xFF777777),
-                      ),
-                    ),
-                  ),
-                  const TextWidget(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Color(0xFFA6AEB6),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.48,
-                    ),
-                  ),
-                ],
+              padding: EdgeInsets.only(bottom: 37.0),
+              child: AuthenticationBackButtonWidget(
+                title: 'Sign Up',
               ),
             ),
-            const TextWidget(
+            TextWidget(
               'Register with mobile',
               style: TextStyle(
                 color: Colors.white,
@@ -55,7 +35,7 @@ class ResetPasswordPage extends StatelessWidget {
                 letterSpacing: 0.84,
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(top: 16.0),
               child: TextWidget(
                 'Please type your number, then we’ll send a verification code for authentication.',
@@ -67,7 +47,7 @@ class ResetPasswordPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(
                 top: 56.0,
                 bottom: 60.0,
@@ -94,7 +74,7 @@ class ResetPasswordPage extends StatelessWidget {
                 ],
               ),
             ),
-            const CommonButtonWidget(
+            CommonButtonWidget(
               child: TextWidget(
                 'Send OTP',
                 style: TextStyle(

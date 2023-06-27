@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_field_rounded_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_widget.dart';
@@ -17,16 +18,16 @@ class ResetPasswordPage extends StatelessWidget {
           horizontal: 24.0,
           vertical: 32 + padding.top,
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 37.0),
               child: AuthenticationBackButtonWidget(
                 title: 'Sign Up',
               ),
             ),
-            TextWidget(
+            const TextWidget(
               'Register with mobile',
               style: TextStyle(
                 color: Colors.white,
@@ -35,7 +36,7 @@ class ResetPasswordPage extends StatelessWidget {
                 letterSpacing: 0.84,
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 16.0),
               child: TextWidget(
                 'Please type your number, then we’ll send a verification code for authentication.',
@@ -47,7 +48,7 @@ class ResetPasswordPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 top: 56.0,
                 bottom: 60.0,
@@ -75,7 +76,10 @@ class ResetPasswordPage extends StatelessWidget {
               ),
             ),
             CommonButtonWidget(
-              child: TextWidget(
+              onPressed: () {
+                context.pop();
+              },
+              child: const TextWidget(
                 'Send OTP',
                 style: TextStyle(
                   color: Color(0xFF171D22),

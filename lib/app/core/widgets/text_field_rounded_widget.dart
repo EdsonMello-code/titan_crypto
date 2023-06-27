@@ -10,6 +10,7 @@ class TextFieldRoundedWidget extends StatelessWidget {
   final int? textLenght;
   final OnChanged<String?>? onChanged;
   final TextInputType keyboardType;
+  final bool isCollapsed;
 
   const TextFieldRoundedWidget({
     super.key,
@@ -20,6 +21,7 @@ class TextFieldRoundedWidget extends StatelessWidget {
     this.textLenght,
     this.onChanged,
     this.keyboardType = TextInputType.text,
+    this.isCollapsed = false,
   });
 
   @override
@@ -42,7 +44,7 @@ class TextFieldRoundedWidget extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText: hint,
-          isCollapsed: true,
+          isCollapsed: isCollapsed,
           counterText: '',
           contentPadding: contentPadding ??
               const EdgeInsets.only(

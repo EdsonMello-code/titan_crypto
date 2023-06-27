@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/common_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/buttons/text_button_widget.dart';
 import 'package:titan_crypto/app/core/widgets/text_time_widget.dart';
@@ -95,10 +96,13 @@ class ValidationCodePage extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 55.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 55.0),
               child: CommonButtonWidget(
-                child: TextWidget(
+                onPressed: () {
+                  context.go('/authentication');
+                },
+                child: const TextWidget(
                   'Continue',
                   style: TextStyle(
                     color: Color(0xFF171D22),

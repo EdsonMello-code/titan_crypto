@@ -15,6 +15,7 @@ class AuthenticationCodeWidget extends StatelessWidget {
             child: TextFieldRoundedWidget(
               alignment: TextAlign.center,
               keyboardType: TextInputType.number,
+              isCollapsed: true,
               contentPadding: EdgeInsets.zero,
               fontSize: 32,
               onChanged: (value) {
@@ -31,8 +32,10 @@ class AuthenticationCodeWidget extends StatelessWidget {
           Expanded(
             child: TextFieldRoundedWidget(
               alignment: TextAlign.center,
+              isCollapsed: true,
               contentPadding: EdgeInsets.zero,
               fontSize: 32,
+              keyboardType: TextInputType.number,
               textLenght: 1,
               onChanged: (value) {
                 if ((value?.length ?? 0) >= 1) {
@@ -46,10 +49,12 @@ class AuthenticationCodeWidget extends StatelessWidget {
           ),
           Expanded(
             child: TextFieldRoundedWidget(
+              isCollapsed: true,
               alignment: TextAlign.center,
               fontSize: 32,
               contentPadding: EdgeInsets.zero,
               textLenght: 1,
+              keyboardType: TextInputType.number,
               onChanged: (value) {
                 if ((value?.length ?? 0) >= 1) {
                   primaryFocus?.nextFocus();
@@ -62,9 +67,11 @@ class AuthenticationCodeWidget extends StatelessWidget {
           ),
           Expanded(
             child: TextFieldRoundedWidget(
+              isCollapsed: true,
               alignment: TextAlign.center,
               fontSize: 32,
               contentPadding: EdgeInsets.zero,
+              keyboardType: TextInputType.number,
               textLenght: 1,
               onChanged: (value) {
                 if ((value?.length ?? 0) >= 1) {

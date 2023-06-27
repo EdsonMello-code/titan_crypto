@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:titan_crypto/app/core/types/types.dart';
 
 class TextFieldRoundedWidget extends StatelessWidget {
   final String hint;
-  const TextFieldRoundedWidget({super.key, this.hint = ''});
+  final TextAlign alignment;
+  final EdgeInsets? contentPadding;
+  final double fontSize;
+  final int? textLenght;
+  final OnChanged<String?>? onChanged;
+  final TextInputType keyboardType;
+
+  const TextFieldRoundedWidget({
+    super.key,
+    this.hint = '',
+    this.alignment = TextAlign.start,
+    this.contentPadding,
+    this.fontSize = 14,
+    this.textLenght,
+    this.onChanged,
+    this.keyboardType = TextInputType.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +31,24 @@ class TextFieldRoundedWidget extends StatelessWidget {
       child: TextFormField(
         expands: true,
         maxLines: null,
+        onChanged: onChanged,
+        maxLength: textLenght,
+        textAlign: alignment,
+        keyboardType: keyboardType,
         style: GoogleFonts.ubuntu(
-          fontSize: 14,
+          fontSize: fontSize,
           fontWeight: FontWeight.w400,
           color: const Color(0xFF777777),
         ),
         decoration: InputDecoration(
           hintText: hint,
-          contentPadding: const EdgeInsets.only(
-            top: 20,
-            left: 20,
-          ),
+          isCollapsed: true,
+          counterText: '',
+          contentPadding: contentPadding ??
+              const EdgeInsets.only(
+                top: 20,
+                left: 20,
+              ),
         ),
       ),
     );

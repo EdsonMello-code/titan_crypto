@@ -4,7 +4,7 @@ import 'package:titan_crypto/app/modules/onboarding/onboarding_module.dart';
 import 'package:titan_crypto/app/modules/splash/splash_module.dart';
 
 final appModule = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/authentication/validation-code',
   routes: [
     SplashModule(path: '/'),
     OnboardingModule(path: '/onboarding'),

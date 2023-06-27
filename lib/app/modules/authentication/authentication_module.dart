@@ -4,6 +4,7 @@ import 'package:titan_crypto/app/core/services/local_auth/local_auth_service_imp
 import 'package:titan_crypto/app/modules/authentication/pages/authentication_page.dart';
 import 'package:titan_crypto/app/modules/authentication/pages/reset_password_page.dart';
 import 'package:titan_crypto/app/modules/authentication/pages/sign_up_success_page.dart';
+import 'package:titan_crypto/app/modules/authentication/pages/validation_code_page.dart';
 
 class AuthenticationModule extends GoRoute {
   AuthenticationModule({required super.path})
@@ -29,6 +30,12 @@ class AuthenticationModule extends GoRoute {
           path: 'reset-password',
           builder: (context, state) {
             return const ResetPasswordPage();
+          },
+        ),
+        GoRoute(
+          path: 'validation-code',
+          builder: (context, state) {
+            return const ValidationCodePage();
           },
         ),
       ];

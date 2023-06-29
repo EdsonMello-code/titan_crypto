@@ -9,13 +9,17 @@ https://github.com/EdsonMello-code/titan_crypto/assets/55053346/99520582-26ba-4b
 
 ## :heavy_check_mark: Telas do projeto
 
-<img src="./docs/splash.png" >
 
-<img src="./docs/signup.png" >
+<div align="center" style="display: flex;   flex-wrap: wrap; margin-top: 10px">
+ <img src="./docs/splash.png" style="margin-right: 10px" >
 
-<img src="./docs/signin.png" >
+<img src="./docs/signup.png"  style="margin-right: 10px"  >
 
-<img src="./docs/created_account.png" >
+<img src="./docs/signin.png"  style="margin-right: 10px"  >
+
+<img src="./docs/created_account.png"  style="margin-top: 10px" >
+</div>
+
 
 
 ## :computer: Tecnologias, APIs, Packages utilizados:

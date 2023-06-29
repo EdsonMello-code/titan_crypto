@@ -2,12 +2,13 @@
 
 Projeto de criptomoedas feito em flutter.
 
-[./docs/splash.png](docs/video_demo.mp4)
+
+https://github.com/EdsonMello-code/titan_crypto/assets/55053346/99520582-26ba-4be6-a679-342fb82c9412
+
 
 
 ## :heavy_check_mark: Telas do projeto
 
-<div style=>
 <img src="./docs/splash.png" >
 
 <img src="./docs/signup.png" >
@@ -15,7 +16,6 @@ Projeto de criptomoedas feito em flutter.
 <img src="./docs/signin.png" >
 
 <img src="./docs/created_account.png" >
-</div>
 
 
 ## :computer: Tecnologias, APIs, Packages utilizados:

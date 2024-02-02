@@ -12,7 +12,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
-  final pageController = PageController();
+  final _pageController = PageController();
 
   final pages = [
     const OnboardingPageItem(
@@ -37,6 +37,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final page = _pageController.page?.toInt() ?? 0;
+
     return Scaffold(
       body: Column(
         children: [
@@ -44,7 +46,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             flex: 4,
             child: PageView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              controller: pageController,
+              controller: _pageController,
               itemCount: pages.length,
               itemBuilder: (context, index) {
                 return pages[index];
@@ -73,12 +75,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 40.0),
                         child: AnimatedBuilder(
-                          animation: pageController,
+                          animation: _pageController,
                           builder: (context, _) {
                             return OnBoardingDotWidget(
                               dotsLenght: pages.length,
-                              currentIndexDot:
-                                  (pageController.page?.toInt() ?? 0),
+                              currentIndexDot: page,
                             );
                           },
                         ),
@@ -89,15 +90,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           width: 180,
                           child: CommonButtonWidget(
                             onPressed: () {
-                              if ((pageController.page?.toInt() ?? 0) <
-                                  (pages.length - 1)) {
-                                pageController.nextPage(
+                              final pageSmallerThanPages =
+                                  page < (pages.length - 1);
+
+                              if (pageSmallerThanPages) {
+                                _pageController.nextPage(
                                   curve: Curves.decelerate,
                                   duration: const Duration(
                                     milliseconds: 600,
                                   ),
                                 );
-                              } else {}
+                              }
                             },
                             child: const TextWidget(
                               'Next',
